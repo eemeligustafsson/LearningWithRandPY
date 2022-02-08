@@ -64,3 +64,12 @@ ax.view_init(30,45)
 plt.show()
 
 #esimerkki3 X = ?D
+data = pd.read_csv('diabetes_scaled.csv', index_col=0)
+data_y = data['target'] #target
+data_for_X = data.loc[:, data.columns != 'target'] #näistä valitaan x:n sarakkeet
+
+#testataan 1 sarake kerrallaan
+for i in range(0,len(data_for_X.columns)):
+    data_X = data_for_X.iloc[:, [i]]
+    print('\nx = ', data_X.columns.values)
+    lineaarireg.teeLineaariRegressio(data_X, data_y)
