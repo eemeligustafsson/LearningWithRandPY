@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 #esimerkki1 X = 1D
 X = np.array([5, 10, 15, 20, 25, 30, 35, 40 ,45, 50, 55]).reshape((-1,1))
 y = np.array([5, 12, 20, 22, 14, 26, 32, 44, 22 ,47, 38])
@@ -73,3 +72,27 @@ for i in range(0,len(data_for_X.columns)):
     data_X = data_for_X.iloc[:, [i]]
     print('\nx = ', data_X.columns.values)
     lineaarireg.teeLineaariRegressio(data_X, data_y)
+    
+#testataan 2 saraketta kerrallaa
+for i in range(0,len(data_for_X.columns)):
+    for j in range(i,len(data_for_X.columns)):
+        if i!=j:
+            data_X = data_for_X.iloc[:, [i,j]]
+            print('\nX = ', data_X.columns.values)
+            lineaarireg.teeLineaariRegressio(data_X, data_y)
+
+#selitysaste R2 (suurin ensin)
+#edellisen perusteella valitaan kaksi
+#testataan bmi + s5 + joku kolmas
+for i in range(0,len(data_for_X.columns)):
+    if((data_for_X.columns.values[i]!= 'bmi') and
+       (data_for_X.columns.values[i] != 's5')):
+        data_X = data_for_X.loc[:, ['bmi', 's5', data_for_X.columns[i]]]
+        print('\nX = ', data_X.columns.values)
+        lineaarireg.teeLineaariRegressio(data_X, data_y)
+
+
+#paras malli, voitiin selvittää tekemällä lisää samankaltaisia silmukoita kun yläpuolella
+data_X = data_for_X.loc[:, ['bmi', 's5', 'bp', 's3','sex', 's6']]
+print('\nX = ',data_X.columns.values)
+malli = lineaarireg.teeLineaariRegressio(data_X, data_y)

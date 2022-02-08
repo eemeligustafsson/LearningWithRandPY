@@ -5,6 +5,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error as MSE
 from sklearn.metrics import r2_score as R2
 
+#helppokäyttöinen lineaariregression funktio
 def teeLineaariRegressio(X, y, testiosuus=0.25, siemen=100):
     #ositetaan data testi ja opetusdataan
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=testiosuus, random_state=siemen)
