@@ -1,5 +1,5 @@
-y <- c(5,4,-1,3,-1,2)#data josta ennustetaan
-y_hat <- c(4,3,0,3,1,0) #mallista tuotettu data
+    y <- c(-1,-1,0,1,1,2,2)#data josta ennustetaan
+y_hat <- c(-1, 0, 2, 2, 8, 9, 10) #mallista tuotettu data
 
 err <- y - y_hat##virheen määrä arvojen ennustavien ja tulosarvojen välillä
 RSS <- sum(err^2)#virheiden neliöiden summat
